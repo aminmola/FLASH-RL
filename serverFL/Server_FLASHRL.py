@@ -826,7 +826,7 @@ class Server_FLASHRL(object):
                 # ie : the client near the global weights are the good one
                 utility_clients = np.exp(-np.abs(normalized_distance))
             else:
-                utility_clients = 1- np.exp(-np.abs(normalized_distance))
+                utility_clients = - np.exp(-np.abs(normalized_distance))
                 
             
             # Now we will use the same reputation eq as the FedDRL_Reputation, just replacing the accuracies with the utility
