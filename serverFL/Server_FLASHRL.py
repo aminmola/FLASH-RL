@@ -499,10 +499,11 @@ class Server_FLASHRL(object):
             if(Accuray_global_t > Accuracy_global_pervoius):
                 # if we had an increase in the F1 score we want to minimaze the distance
                 # ie : the client near the global weights are the good one
-                utility_clients = np.exp(-np.abs(normalized_distance))
+                # utility_clients = np.exp(-np.abs(normalized_distance))
+                utility_clients = 0
             else:
-                utility_clients = np.exp(-np.abs(normalized_distance))
-                
+                # utility_clients = np.exp(-np.abs(normalized_distance))
+                utility_clients = 0
             
             # Now we will use the same reputation eq as the FedDRL_Reputation, just replacing the accuracies with the utility
             reputation_clients_t[active_clients_index] = (1 - lamb)*reputation_clients_t[active_clients_index] + lamb*(utility_clients - (((np.array(time_roundt)) - min_latency) / (max_latency - min_latency)))
@@ -824,9 +825,11 @@ class Server_FLASHRL(object):
             if(F1score_global_t > F1score_global_pervoius):
                 # if we had an increase in the F1 score we want to minimaze the distance
                 # ie : the client near the global weights are the good one
-                utility_clients = np.exp(-np.abs(normalized_distance))
+                # utility_clients = np.exp(-np.abs(normalized_distance))
+                utility_clients = 0
             else:
-                utility_clients = np.exp(-np.abs(normalized_distance))
+                # utility_clients = np.exp(-np.abs(normalized_distance)) 
+                utility_clients = 0
                 
             
             # Now we will use the same reputation eq as the FedDRL_Reputation, just replacing the accuracies with the utility
